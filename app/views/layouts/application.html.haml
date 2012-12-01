@@ -12,4 +12,12 @@
         .container
           = image_tag "logo.png", style: "height: 60px;"
     #content.container
+      - if notice
+        .alert
+          %button.close{type: "button", 'data-dismiss' => "alert"} ×
+          = notice
+      - if alert
+        .alert.alert-error
+          %button.close{type: "button", 'data-dismiss' => "alert"} ×
+          = alert
       =yield

@@ -1,13 +1,14 @@
-.form-horizontal
-  %h2 Mete bronca!
-  .control-group
-    %label.control-label Título
-    .controls
-      %input.input-xxlarge{type: "text"}
-  .control-group
-    %label.control-label Descrição
-    .controls
-      %textarea.input-xxlarge{type: "text", rows: 8}
-  .form-actions
-    %button.btn.btn-large.btn-primary Perguntar
-    %button.btn.btn-large Cancelar
+= form_tag questions_path do
+  .form-horizontal
+    %h2 Mete bronca!
+    .control-group
+      %label.control-label Título
+      .controls
+        = text_field_tag :title, nil, class: "input-xxlarge"
+    .control-group
+      %label.control-label Descrição
+      .controls
+        = text_area_tag :question, nil, rows: 8, class: "input-xxlarge"
+    .form-actions
+      = submit_tag "Perguntar",  class: "btn btn-large btn-primary"
+      = link_to "Cancelar", :root , class: "btn btn-large"

@@ -1,13 +1,18 @@
 .hero-unit
   %h1 Ninja das Dúvidas
   %p Olá, bem vindo ao Ninja das Dúvidas, seu assassino de dúvidas! Coloque abaixo o código de login que você recebou:
-  .row
-    .input-prepend.span4
-      .add-on Email
-      %input{type: "text"}
-    .input-prepend.span4
-      .add-on Código
-      %input{type: "text"}
-  .row
-    .span6
-      .btn.btn-large.btn-primary Perguntar
+  - if has_credits?
+    = "Você possui #{current_coupon.credits} créditos"
+    = link_to "Perguntar", new_question_path, class: "btn btn-large btn-primary"
+  - else
+    = form_tag "/login" do
+      .row
+        .input-prepend.span4
+          .add-on Email
+          = text_field_tag :email
+        .input-prepend.span4
+          .add-on Código
+          = text_field_tag :code
+      .row
+        .span6
+          = submit_tag "Perguntar",  class: "btn btn-large btn-primary"
