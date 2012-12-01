@@ -1,2 +1,13 @@
-%h1 Questions#new
-%p Find me in app/views/questions/new.html.haml
+.form-horizontal
+  %h2 Mete bronca!
+  .control-group
+    %label.control-label Título
+    .controls
+      %input.input-xxlarge{type: "text"}
+  .control-group
+    %label.control-label Descrição
+    .controls
+      %textarea.input-xxlarge{type: "text", rows: 8}
+  .form-actions
+    %button.btn.btn-large.btn-primary Perguntar
+    %button.btn.btn-large Cancelar

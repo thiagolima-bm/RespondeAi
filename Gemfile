@@ -15,7 +15,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   gem 'therubyracer', :platforms => :ruby
-  gem 'sass-twitter-bootstrap-rails', '~> 1.0'
+  gem 'bootstrap-sass-rails', '~> 1.0'
 
   gem 'uglifier', '>= 1.0.3'
 end

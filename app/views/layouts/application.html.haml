@@ -1,0 +1,15 @@
+!!! html
+%html
+  %head
+    %title Ninja das Dúvidas
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    = favicon_link_tag
+  %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          = image_tag "logo.png", style: "height: 60px;"
+    #content.container
+      =yield
