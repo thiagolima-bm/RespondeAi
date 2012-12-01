@@ -13,7 +13,7 @@ class QuestionsController < ApplicationController
     if coupon && coupon.credits
       coupon.credits -= 1
       coupon.save
-      QuestionMailer.send_question(params[:title], params[:question], session[:email])
+      QuestionMailer.send_question(params[:title], params[:question], session[:email]).deliver
       redirect_to :root, notice: "Dúvida enviada. Fique atento à sua caixa de mensagens!"
     end
   end

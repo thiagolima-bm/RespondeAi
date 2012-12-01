@@ -6,6 +6,6 @@ class QuestionMailer < ActionMailer::Base
     @title = title
     @email = user_email
     @body = body
-    mail(subject: "Ninjas - #{title}", to: "ninjadasduvidas@gmail.com")
+    mail(to: "ninjadasduvidas@gmail.com", subject: "Ninjas - #{title}")
   end
 end
