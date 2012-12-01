@@ -6,6 +6,7 @@ class QuestionMailer < ActionMailer::Base
     @title = title
     @email = user_email
     @body = body
+    headers 'In-Reply-To' => user_email
     mail(to: "ninjadasduvidas@gmail.com", subject: "Ninjas - #{title}")
   end
 end
