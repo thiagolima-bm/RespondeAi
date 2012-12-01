@@ -1,5 +1,5 @@
 class QuestionMailer < ActionMailer::Base
-  default from: "ninjadasduvidas@gmail.com"
+  default from: "info@ninjadasduvidas.com.br"
   default to: "ninjadasduvidas@gmail.com"
 
   def send_question(title, body, user_email)

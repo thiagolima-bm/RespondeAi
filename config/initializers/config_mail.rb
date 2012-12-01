@@ -1,9 +1,9 @@
 ActionMailer::Base.smtp_settings = {
-  :address => "smtp.gmail.com",
-  :port => "587",
-  :domain => "localhost.localdomain",
-  :authentication => :plain,
-  :user_name => "ninjadasduvidas",
-  :password => "bizulabneles"
+    :port =>           '587',
+    :address =>        'smtp.mandrillapp.com',
+    :user_name =>      ENV['MANDRILL_USERNAME'],
+    :password =>       ENV['MANDRILL_APIKEY'],
+    :domain =>         'ninjadasduvidas.com.br',
+    :authentication => :plain
 }
 ActionMailer::Base.delivery_method = :smtp
