@@ -18,15 +18,26 @@ class QuestionsController < ApplicationController
     end
   end
 
+  # those methods should be in another controller, but I'll keep that here for now.
   def login
     @coupon = Coupon.find_by_code params[:code]
     if @coupon
-      session[:coupon] = @coupon.id
-      session[:email] = params[:email]
-      redirect_to new_question_path, notice: "Você está logado e ainda tem #{@coupon.credits} créditos."
+      if params[:email] =~ /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/
+        session[:coupon] = @coupon.id
+        session[:email] = params[:email]
+        redirect_to new_question_path, notice: "Você está logado e ainda tem #{@coupon.credits} créditos."
+      else
+        redirect_to :root, alert: "Email inválido"
+      end
     else
       redirect_to :root, alert: "Código inválido"
     end
+  end
+
+  def logout
+    session[:coupon] = nil
+    session[:email] = nil
+    redirect_to :root, notice: "Você saiu."
   end
 
   private

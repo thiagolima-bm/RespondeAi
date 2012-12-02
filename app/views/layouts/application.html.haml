@@ -1,5 +1,5 @@
 !!! html
-%html
+%html{class: "js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms no-csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"}
   %head
     %title Ninja das Dúvidas
     = stylesheet_link_tag    "application", :media => "all"
@@ -10,7 +10,7 @@
     .navbar.navbar-fixed-top
       .navbar-inner
         .container
-          = image_tag "logo.png", style: "height: 60px;"
+          = link_to image_tag("logo.png"), root_path
     #content.container
       - if notice
         .alert

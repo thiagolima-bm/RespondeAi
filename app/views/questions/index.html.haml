@@ -2,18 +2,25 @@
   %h1 Ninja das Dúvidas
   - if has_credits?
     %p Olá, bem vindo ao Ninja das Dúvidas, seu assassino de dúvidas!
-    = "Você possui #{current_coupon.credits} créditos"
+    = "Você possui #{current_coupon.credits} créditos usando o código #{current_coupon.code}."
+    %br
+    = "Suas dúvidas serão respondidas ao email #{session[:email]}."
+    %br
     = link_to "Entrar", new_question_path, class: "btn btn-large btn-primary"
+    %br
+    = link_to "Usar outro código", "/logout"
   - else
     %p Olá, bem vindo ao Ninja das Dúvidas, seu assassino de dúvidas! Coloque abaixo o código de login que você recebeu:
-    = form_tag "/login" do
+    = form_tag "/login", id: :login do
       .row
-        .input-prepend.span4
-          .add-on Email
-          = text_field_tag :email
-        .input-prepend.span4
-          .add-on Código
-          = text_field_tag :code
+        .control-group.span4
+          %label.control-label Email
+          .controls
+            = text_field_tag :email, nil, {class: "span4", autocomplete: "off"}
+        .control-group.span4
+          %label.control-labe Código
+          .controls
+            = text_field_tag :code, nil, {class: "span4", autocomplete: "off"}
       .row
         .span6
           = submit_tag "Entrar",  class: "btn btn-large btn-primary"
