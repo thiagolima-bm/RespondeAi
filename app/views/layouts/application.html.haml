@@ -11,6 +11,9 @@
       .navbar-inner
         .container
           = link_to image_tag("logo.png"), root_path
+          %ul.nav.pull-right
+            %li{class: current_page?(action: "index") ? "active" : ""}= link_to "Home", "/"
+            %li{class: current_page?(action: "about") ? "active" : ""}= link_to "Quem São Esses Ninjas?", "/about"
     #content.container
       - if notice
         .alert
