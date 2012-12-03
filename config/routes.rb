@@ -3,4 +3,5 @@ Duvidas::Application.routes.draw do
   resources :questions, only: [:index, :new, :create]
   match "/login" => "questions#login"
   match "/logout" => "questions#logout"
+  match "/about" => "questions#about"
 end

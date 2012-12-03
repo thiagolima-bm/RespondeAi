@@ -2,15 +2,15 @@
   %h1 Ninja das Dúvidas
   - if has_credits?
     %p Olá, bem vindo ao Ninja das Dúvidas, seu assassino de dúvidas!
-    = "Você possui #{current_coupon.credits} créditos usando o código #{current_coupon.code}."
+    = "Você ainda tem #{current_coupon.credits} perguntas com o código #{current_coupon.code}."
     %br
-    = "Suas dúvidas serão respondidas ao email #{session[:email]}."
+    = "Nossos ninjas tentarão responder o mais rápido possível. Fique ligado no e-mail #{session[:email]}, sua resposta será enviada para este endereço!"
     %br
     = link_to "Entrar", new_question_path, class: "btn btn-large btn-primary"
     %br
     = link_to "Usar outro código", "/logout"
   - else
-    %p Olá, bem vindo ao Ninja das Dúvidas, seu assassino de dúvidas! Coloque abaixo o código de login que você recebeu:
+    %p Olá, bem vindo ao Ninja das Dúvidas, seu assassino de dúvidas! Coloque abaixo o código de login que você recebeu no cartão e o e-mail para o qual você gostaria de ser respondido
     = form_tag "/login", id: :login do
       .row
         .control-group.span4

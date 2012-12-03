@@ -8,13 +8,19 @@ class QuestionsController < ApplicationController
   def new
   end
 
+  def about
+  end
+
   def create
     coupon = Coupon.find_by_id session[:coupon]
     if coupon && coupon.credits
-      coupon.credits -= 1
       coupon.save
-      QuestionMailer.send_question(params[:title], params[:question], session[:email]).deliver
-      redirect_to :root, notice: "Dúvida enviada. Fique atento à sua caixa de mensagens!"
+      if QuestionMailer.send_question(params[:title], params[:question], session[:email], coupon.code).deliver
+        coupon.credits -= 1
+        redirect_to :root, notice: "Opa! Sua dúvida foi enviada."
+      else
+        redirect_to :root, notice: "Algum erro ocorreu"
+      end
     end
   end
 
