@@ -6,7 +6,7 @@ $ ->
         email: true
       code:
         required: true
-        rangelength: [5,5]
+        rangelength: [6,6]
     messages:
       email:
         required: "É necessário entrar com um email."
