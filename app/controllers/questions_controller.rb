@@ -43,7 +43,7 @@ class QuestionsController < ApplicationController
   def logout
     session[:coupon] = nil
     session[:email] = nil
-    redirect_to :root, notice: "Você saiu."
+    redirect_to :root, notice: "Você desconectou. Volte sempre!"
   end
 
   private
