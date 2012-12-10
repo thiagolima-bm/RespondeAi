@@ -11,7 +11,7 @@
       .controls
         = text_area_tag :question, nil, rows: 8, class: "input-xxlarge"
     .form-actions
-      = submit_tag "Perguntar",  class: "btn btn-large btn-primary", 
+      = submit_tag "Enviar",  class: "btn btn-large btn-danger", 
             :confirm => "Esta pergunta custará 1 crédito. Você deseja enviá-la aos nossos ninjas?",
             :disable_with => "Enviando..."
       = link_to "Cancelar", :root , class: "btn btn-large",
