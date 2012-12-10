@@ -17,6 +17,7 @@ class QuestionsController < ApplicationController
       coupon.save
       if QuestionMailer.send_question(params[:title], params[:question], session[:email], coupon.code).deliver
         coupon.credits -= 1
+        coupon.save
         redirect_to :root, notice: "Opa! Sua dúvida foi enviada."
       else
         redirect_to :root, notice: "Algum erro ocorreu"
