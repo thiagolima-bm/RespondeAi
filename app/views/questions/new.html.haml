@@ -13,4 +13,5 @@
     .form-actions
       = submit_tag "Perguntar",  class: "btn btn-large btn-primary", 
             :confirm => "Esta pergunta custará 1 crédito. Você deseja enviá-la aos nossos ninjas?"
-      = link_to "Cancelar", :root , class: "btn btn-large"
+      = link_to "Cancelar", :root , class: "btn btn-large",
+            :confirm => "Estas informações serão perdidas. Tem certeza que deseja cancelar?"
