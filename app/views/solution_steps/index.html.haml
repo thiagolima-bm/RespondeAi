@@ -1,0 +1,23 @@
+%h1 Listing solution_steps
+
+%table
+  %tr
+    %th Number
+    %th Body
+    %th Exercise
+    %th
+    %th
+    %th
+
+  - @solution_steps.each do |solution_step|
+    %tr
+      %td= solution_step.number
+      %td= solution_step.body
+      %td= solution_step.exercise_id
+      %td= link_to 'Show', solution_step
+      %td= link_to 'Edit', edit_solution_step_path(solution_step)
+      %td= link_to 'Destroy', solution_step, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Solution step', new_solution_step_path

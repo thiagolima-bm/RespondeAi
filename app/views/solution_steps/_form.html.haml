@@ -1,0 +1,19 @@
+= form_for @solution_step do |f|
+  - if @solution_step.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@solution_step.errors.count, "error")} prohibited this solution_step from being saved:"
+      %ul
+        - @solution_step.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :number
+    = f.text_field :number
+  .field
+    = f.label :body
+    = f.text_area :body
+  .field
+    = f.label :exercise_id
+    = f.number_field :exercise_id
+  .actions
+    = f.submit 'Save'

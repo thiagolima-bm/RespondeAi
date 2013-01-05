@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Number:
+  = @solution_step.number
+%p
+  %b Body:
+  = @solution_step.body
+%p
+  %b Exercise:
+  = @solution_step.exercise_id
+
+= link_to 'Edit', edit_solution_step_path(@solution_step)
+\|
+= link_to 'Back', solution_steps_path
