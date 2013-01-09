@@ -4,4 +4,5 @@ Duvidas::Application.routes.draw do
   match "/login" => "questions#login"
   match "/logout" => "questions#logout"
   match "/about" => "questions#about"
+  mathjax 'mathjax'
 end

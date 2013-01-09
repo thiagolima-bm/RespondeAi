@@ -6,6 +6,9 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
     = favicon_link_tag
+    %script{type: "text/x-mathjax-config"} MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'] ], processEscapes: true } });
+    = mathjax_tag
+
   %body
     .navbar.navbar-fixed-top
       .navbar-inner
