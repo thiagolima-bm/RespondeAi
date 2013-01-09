@@ -1,31 +1,23 @@
-%h1 Listing books
+.page-header
+  %h1 Livros
 
-%table
-  %tr
-    %th Title
-    %th Author
-    %th Edition
-    %th Publisher
-    %th Isbn10
-    %th Isbn13
-    %th Description
-    %th
-    %th
-    %th
+.row-fluid
+  .span3
+    = link_to 'Adicionar livro', new_book_path, class: "btn btn-primary"
 
-  - @books.each do |book|
-    %tr
-      %td= book.title
-      %td= book.author
-      %td= book.edition
-      %td= book.publisher
-      %td= book.isbn10
-      %td= book.isbn13
-      %td= book.description
-      %td= link_to 'Show', book
-      %td= link_to 'Edit', edit_book_path(book)
-      %td= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }
+  .span9
+    %table.table
+      %tr
+        %th Título
+        %th Autor
+        %th Edição
+        %th
+        %th
 
-%br
-
-= link_to 'New Book', new_book_path
+      - @books.each do |book|
+        %tr
+          %td= link_to book.title, book
+          %td= book.author
+          %td= book.edition
+          %td= link_to 'Edit', edit_book_path(book)
+          %td= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }

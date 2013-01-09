@@ -25,6 +25,7 @@ class SolutionStepsController < ApplicationController
   # GET /solution_steps/new.json
   def new
     @solution_step = SolutionStep.new
+    @solution_step.exercise = Exercise.find params[:exercise]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,7 +45,7 @@ class SolutionStepsController < ApplicationController
 
     respond_to do |format|
       if @solution_step.save
-        format.html { redirect_to @solution_step, notice: 'Solution step was successfully created.' }
+        format.html { redirect_to exercise_path(@solution_step.exercise), notice: 'Solution step was successfully created.' }
         format.json { render json: @solution_step, status: :created, location: @solution_step }
       else
         format.html { render action: "new" }
@@ -60,7 +61,7 @@ class SolutionStepsController < ApplicationController
 
     respond_to do |format|
       if @solution_step.update_attributes(params[:solution_step])
-        format.html { redirect_to @solution_step, notice: 'Solution step was successfully updated.' }
+        format.html { redirect_to exercise_path(@solution_step.exercise), notice: 'Solution step was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +77,7 @@ class SolutionStepsController < ApplicationController
     @solution_step.destroy
 
     respond_to do |format|
-      format.html { redirect_to solution_steps_url }
+      format.html { redirect_to exercise_path(@solution_step.exercise) }
       format.json { head :no_content }
     end
   end

@@ -1,15 +1,43 @@
-%p#notice= notice
+.page-header
+  %h1= (link_to Book.find(@chapter.book_id).title, @chapter.book) + ' > Capítulo ' + @chapter.number
 
-%p
-  %b Number:
-  = @chapter.number
-%p
-  %b Title:
-  = @chapter.title
-%p
-  %b Book:
-  = @chapter.book_id
+.row-fluid
+  .span3
+    = link_to 'Adicionar exercício', new_exercise_path(:chapter => @chapter.id), class: "btn btn-primary"
+    %br
+    %br
+    %h4 Dados do livro
+    %p
+      %b Título:
+      = @chapter.book.title
+    %p
+      %b Autor:
+      = @chapter.book.author
+    %p
+      %b Edição:
+      = @chapter.book.edition
+    %p
+      %b Editora:
+      = @chapter.book.publisher
+    %p
+      %b ISBN 10:
+      = @chapter.book.isbn10
+    %p
+      %b ISBN 13:
+      = @chapter.book.isbn13
+    %p
+      %b Descrição:
+      = @chapter.book.description
 
-= link_to 'Edit', edit_chapter_path(@chapter)
-\|
-= link_to 'Back', chapters_path
+    = link_to 'Editar', edit_book_path(@chapter.book)
+
+  .span9
+    %h4 Exercícios
+    %table.table.table-hover
+
+      - @exercises.each do |exercise|
+        %tr
+          %td= link_to exercise.number, exercise
+          %td= link_to 'Editar', edit_exercise_path(exercise)
+          %td= link_to 'Remover', exercise, method: :delete, data: { confirm: 'Are you sure?' }
+

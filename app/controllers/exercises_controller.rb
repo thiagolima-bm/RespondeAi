@@ -14,6 +14,7 @@ class ExercisesController < ApplicationController
   # GET /exercises/1.json
   def show
     @exercise = Exercise.find(params[:id])
+    @solution_steps = SolutionStep.where("exercise_id = ?", params[:id]).order(:number)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,6 +26,7 @@ class ExercisesController < ApplicationController
   # GET /exercises/new.json
   def new
     @exercise = Exercise.new
+    @exercise.chapter = Chapter.find params[:chapter]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,7 +46,7 @@ class ExercisesController < ApplicationController
 
     respond_to do |format|
       if @exercise.save
-        format.html { redirect_to @exercise, notice: 'Exercise was successfully created.' }
+        format.html { redirect_to chapter_path(@exercise.chapter_id), notice: 'Exercise was successfully created.' }
         format.json { render json: @exercise, status: :created, location: @exercise }
       else
         format.html { render action: "new" }
@@ -60,7 +62,7 @@ class ExercisesController < ApplicationController
 
     respond_to do |format|
       if @exercise.update_attributes(params[:exercise])
-        format.html { redirect_to @exercise, notice: 'Exercise was successfully updated.' }
+        format.html { redirect_to chapter_path(@exercise.chapter_id), notice: 'Exercise was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +78,7 @@ class ExercisesController < ApplicationController
     @exercise.destroy
 
     respond_to do |format|
-      format.html { redirect_to exercises_url }
+      format.html { redirect_to chapter_path(@exercise.chapter_id) }
       format.json { head :no_content }
     end
   end

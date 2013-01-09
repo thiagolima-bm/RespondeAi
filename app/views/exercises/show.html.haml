@@ -1,12 +1,15 @@
-%p#notice= notice
+.page-header
+  %h1= (link_to @exercise.chapter.book.title, @exercise.chapter.book) + " > " + (link_to "Capítulo #{@exercise.chapter.number}", @exercise.chapter) + ' > Exercício ' + @exercise.number
 
-%p
-  %b Number:
-  = @exercise.number
-%p
-  %b Chapter:
-  = @exercise.chapter_id
+.row-fluid
+  .span3
+    =link_to "Adicionar passo", new_solution_step_path(exercise: @exercise.id), class: "btn btn-primary"
 
-= link_to 'Edit', edit_exercise_path(@exercise)
-\|
-= link_to 'Back', exercises_path
+  .span9
+    - @solution_steps.each do |solution_step|
+      .pull-right
+        = link_to 'Edit', edit_solution_step_path(solution_step)
+        = link_to 'Destroy', solution_step, method: :delete, data: { confirm: 'Are you sure?' }
+      %p= "Passo " + solution_step.number
+      %pre= solution_step.body
+

@@ -2,7 +2,11 @@ class ChaptersController < ApplicationController
   # GET /chapters
   # GET /chapters.json
   def index
-    @chapters = Chapter.all
+    if params[:book]
+      @chapters = Chapter.where("book_id = ?", params[:book])
+    else
+      @chapters = Chapter.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +18,7 @@ class ChaptersController < ApplicationController
   # GET /chapters/1.json
   def show
     @chapter = Chapter.find(params[:id])
+    @exercises = Exercise.where("chapter_id = ?", params[:id]).order(:number)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,6 +30,7 @@ class ChaptersController < ApplicationController
   # GET /chapters/new.json
   def new
     @chapter = Chapter.new
+    @chapter.book = Book.find params[:book]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,7 +50,7 @@ class ChaptersController < ApplicationController
 
     respond_to do |format|
       if @chapter.save
-        format.html { redirect_to @chapter, notice: 'Chapter was successfully created.' }
+        format.html { redirect_to book_path(@chapter.book_id), notice: 'Chapter was successfully created.' }
         format.json { render json: @chapter, status: :created, location: @chapter }
       else
         format.html { render action: "new" }
@@ -60,7 +66,7 @@ class ChaptersController < ApplicationController
 
     respond_to do |format|
       if @chapter.update_attributes(params[:chapter])
-        format.html { redirect_to @chapter, notice: 'Chapter was successfully updated.' }
+        format.html { redirect_to book_path(@chapter.book_id), notice: 'Chapter was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +82,7 @@ class ChaptersController < ApplicationController
     @chapter.destroy
 
     respond_to do |format|
-      format.html { redirect_to chapters_url }
+      format.html { redirect_to book_path(@chapter.book_id) }
       format.json { head :no_content }
     end
   end

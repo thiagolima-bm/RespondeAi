@@ -1,23 +1,27 @@
 %h1 Listing chapters
 
-%table
-  %tr
-    %th Number
-    %th Title
-    %th Book
-    %th
-    %th
-    %th
+.row-fluid
+  .span9
+    %table.table
+      %tr
+        %th Number
+        %th Title
+        %th Book
+        %th
+        %th
+        %th
 
-  - @chapters.each do |chapter|
-    %tr
-      %td= chapter.number
-      %td= chapter.title
-      %td= chapter.book_id
-      %td= link_to 'Show', chapter
-      %td= link_to 'Edit', edit_chapter_path(chapter)
-      %td= link_to 'Destroy', chapter, method: :delete, data: { confirm: 'Are you sure?' }
+      - @chapters.each do |chapter|
+        %tr
+          %td= chapter.number
+          %td= chapter.title
+          %td= chapter.book_id
+          %td= link_to 'Show', chapter
+          %td= link_to 'Edit', edit_chapter_path(chapter)
+          %td= link_to 'Destroy', chapter, method: :delete, data: { confirm: 'Are you sure?' }
 
-%br
+  .span3
+    %p Título do livro
+    %p Autor
 
 = link_to 'New Chapter', new_chapter_path

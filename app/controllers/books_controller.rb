@@ -14,6 +14,7 @@ class BooksController < ApplicationController
   # GET /books/1.json
   def show
     @book = Book.find(params[:id])
+    @chapters = Chapter.where("book_id = ?", params[:id]).order(:number)
 
     respond_to do |format|
       format.html # show.html.erb

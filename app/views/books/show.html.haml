@@ -1,27 +1,44 @@
-%p#notice= notice
+.page-header
+  %h1= @book.title
 
-%p
-  %b Title:
-  = @book.title
-%p
-  %b Author:
-  = @book.author
-%p
-  %b Edition:
-  = @book.edition
-%p
-  %b Publisher:
-  = @book.publisher
-%p
-  %b Isbn10:
-  = @book.isbn10
-%p
-  %b Isbn13:
-  = @book.isbn13
-%p
-  %b Description:
-  = @book.description
+.row-fluid
 
-= link_to 'Edit', edit_book_path(@book)
-\|
-= link_to 'Back', books_path
+  .span3
+    = link_to 'Adicionar capítulo', new_chapter_path(:book => @book.id), class: "btn btn-primary"
+    %br
+    %br
+    %h4 Dados do livro
+    %p
+      %b Título:
+      = @book.title
+    %p
+      %b Autor:
+      = @book.author
+    %p
+      %b Edição:
+      = @book.edition
+    %p
+      %b Editora:
+      = @book.publisher
+    %p
+      %b ISBN 10:
+      = @book.isbn10
+    %p
+      %b ISBN 13:
+      = @book.isbn13
+    %p
+      %b Descrição:
+      = @book.description
+
+    = link_to 'Editar', edit_book_path(@book)
+  
+  .span9
+    %h4 Capítulos
+    %table.table.table-hover
+      - @chapters.each do |chapter|
+        %tr
+          %td= chapter.number
+          %td= link_to chapter.title, chapter
+          %td= link_to 'Edit', edit_chapter_path(chapter)
+          %td= link_to 'Destroy', chapter, method: :delete, data: { confirm: 'Are you sure?' }
+

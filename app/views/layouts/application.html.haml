@@ -12,7 +12,8 @@
         .container
           = link_to image_tag("logo.png"), root_path
           %ul.nav.pull-right
-            %li{class: current_page?(action: "index") ? "active" : ""}= link_to "Home", "/"
+            %li{class: current_page?(controller: "questions", action: "index") ? "active" : ""}= link_to "Dúvidas", "/"
+            %li{class: current_page?(controller: "books") ? "active" : ""}= link_to "Livros", books_path
             %li{class: current_page?(controller: "questions", action: "about") ? "active" : ""}= link_to "Quem são esses ninjas?", "/about"
     #content.container
       - if notice
