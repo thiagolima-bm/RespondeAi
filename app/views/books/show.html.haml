@@ -37,8 +37,7 @@
     %table.table.table-hover
       - @chapters.each do |chapter|
         %tr
-          %td= chapter.number
-          %td= link_to chapter.title, chapter
+          %td= link_to chapter.number, chapter
           %td= link_to 'Edit', edit_chapter_path(chapter)
           %td= link_to 'Destroy', chapter, method: :delete, data: { confirm: 'Are you sure?' }
 
