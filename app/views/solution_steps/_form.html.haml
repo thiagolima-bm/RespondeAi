@@ -13,7 +13,6 @@
     = f.label "Resolução"
     = f.text_area :body, class: "span6", rows: 8
   .field
-    = f.label "Exercício"
-    = f.number_field :exercise_id, class: "span6"
+    = f.hidden_field :exercise_id, class: "span6"
   .actions
     = f.submit 'Salvar', class: "btn btn-primary"
