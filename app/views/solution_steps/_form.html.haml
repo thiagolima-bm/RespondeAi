@@ -7,13 +7,13 @@
           %li= msg
 
   .field
-    = f.label :number
-    = f.text_field :number
+    = f.label "Passo"
+    = f.text_field :number, class: "span6"
   .field
-    = f.label :body
-    = f.text_area :body
+    = f.label "Resolução"
+    = f.text_area :body, class: "span6", rows: 8
   .field
-    = f.label :exercise_id
-    = f.number_field :exercise_id
+    = f.label "Exercício"
+    = f.number_field :exercise_id, class: "span6"
   .actions
-    = f.submit 'Save'
+    = f.submit 'Salvar', class: "btn btn-primary"

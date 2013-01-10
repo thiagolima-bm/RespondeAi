@@ -9,7 +9,7 @@
     - @solution_steps.each do |solution_step|
       .pull-right
         = link_to 'Edit', edit_solution_step_path(solution_step)
+        \|
         = link_to 'Destroy', solution_step, method: :delete, data: { confirm: 'Are you sure?' }
       %p= "Passo " + solution_step.number
-      %pre= solution_step.body
-
+      .hero-unit= solution_step.body.html_safe

@@ -1,13 +1,13 @@
 %p
-  %b Number:
+  %b Passo:
   = @solution_step.number
 %p
-  %b Body:
+  %b Resolução:
   = @solution_step.body
 %p
-  %b Exercise:
+  %b Exercício:
   = @solution_step.exercise_id
 
-= link_to 'Edit', edit_solution_step_path(@solution_step)
+= link_to 'Editar', edit_solution_step_path(@solution_step)
 \|
-= link_to 'Back', solution_steps_path
+= link_to 'Voltar', solution_steps_path
