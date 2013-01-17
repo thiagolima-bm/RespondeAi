@@ -19,6 +19,11 @@
 }
 
 .hero-unit h1 {
-	font-family: "Joti One";
-	padding-bottom: 30px;
+  font-family: "Joti One";
+  padding-bottom: 30px;
+}
+
+.page-header {
+  font-family: "Joti One";
+  padding-bottom: 30px;
 }
