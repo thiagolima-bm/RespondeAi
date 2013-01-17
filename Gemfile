@@ -5,6 +5,8 @@ gem 'rails', '3.2.9'
 gem 'haml'
 gem 'haml-rails'
 
+gem 'omniauth-facebook'
+
 gem 'jquery-rails'
 gem 'mathjax-rails'
 
