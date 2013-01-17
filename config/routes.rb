@@ -1,4 +1,7 @@
 Duvidas::Application.routes.draw do
+
+  mathjax 'mathjax'
+
   resources :solution_steps
 
   resources :exercises
