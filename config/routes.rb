@@ -19,4 +19,9 @@ Duvidas::Application.routes.draw do
   match "/logout" => "questions#logout"
   match "/about" => "questions#about"
 
+  # For using with omniauth facebook
+  match 'auth/:provider/callback', to: 'sessions#create'
+  match 'auth/failure', to: redirect('/')
+  match 'signout', to: 'sessions#destroy', as: 'signout'
+  
 end

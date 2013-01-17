@@ -41,7 +41,7 @@ class SolutionStepsController < ApplicationController
   # POST /solution_steps
   # POST /solution_steps.json
   def create
-    @solution_step = SolutionStep.new(params[:solution_step])
+    @solution_step = current_user.solution_steps.new(params[:solution_step])
 
     respond_to do |format|
       if @solution_step.save
