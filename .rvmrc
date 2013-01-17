@@ -1,1 +1,5 @@
+export AMAZON_S3_BUCKET='respondeai-development'
+export AMAZON_ACCESS_KEY_ID='AKIAIWPKIWHUVMFCCJOA'
+export AMAZON_SECRET_ACCESS_KEY='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'
+
 rvm 1.9.3@duvidas --create
