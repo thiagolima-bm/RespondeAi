@@ -11,13 +11,15 @@
         %th Título
         %th Autor
         %th Edição
-        %th
-        %th
+        - if current_user.admin?
+          %th
+          %th
 
       - @books.each do |book|
         %tr
           %td= link_to book.title, book
           %td= book.author
           %td= book.edition
-          %td= link_to 'Edit', edit_book_path(book)
-          %td= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }
+          - if current_user.admin?
+            %td= link_to 'Edit', edit_book_path(book)
+            %td= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }

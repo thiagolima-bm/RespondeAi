@@ -17,6 +17,15 @@
             %li{class: current_page?(controller: "questions", action: "index") ? "active" : ""}= link_to "Dúvidas", "/"
             %li{class: current_page?(controller: "books") ? "active" : ""}= link_to "Livros", books_path
             %li{class: current_page?(controller: "questions", action: "about") ? "active" : ""}= link_to "Quem são esses ninjas?", "/about"
+            %li.dropdown
+              %a.dropdown-toggle{"href" => "#", "data-toggle" => "dropdown"}
+                %img{src: current_user.image_url, width: "20"}
+                = current_user.name.split.first
+                %b.caret
+                %ul.dropdown-menu
+                  %li= link_to "Desconectar", signout_path
+            - if current_user == false
+              %li= link_to "Conectar", "/auth/facebook"
     #content.container
       - if notice
         .alert
