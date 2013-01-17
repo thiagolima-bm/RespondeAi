@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessible :admin, :email, :image_url, :name, :oauth_expires_at, :oauth_token, :provider, :uid
+  has_many :solution_steps
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
