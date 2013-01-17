@@ -1,4 +1,5 @@
 // window.setTimeout(function() { $("#preview").html($("textarea").val()); }, 0);
+//= require ckeditor/init
 
 var formatted = $("textarea").text();
 function updateFileName() 

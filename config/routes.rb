@@ -1,5 +1,7 @@
 Duvidas::Application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
+
   mathjax 'mathjax'
 
   resources :solution_steps
