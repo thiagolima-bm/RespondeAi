@@ -38,7 +38,8 @@
       - @exercises.each do |exercise|
         %tr
           %td= link_to exercise.number, exercise
-          - if current_user.admin?
-            %td= link_to 'Editar', edit_exercise_path(exercise)
-            %td= link_to 'Remover', exercise, method: :delete, data: { confirm: 'Are you sure?' }
+          -if current_user
+            - if current_user.admin?
+              %td= link_to 'Editar', edit_exercise_path(exercise)
+              %td= link_to 'Remover', exercise, method: :delete, data: { confirm: 'Are you sure?' }
 

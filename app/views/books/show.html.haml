@@ -38,7 +38,8 @@
       - @chapters.each do |chapter|
         %tr
           %td= link_to chapter.number, chapter
-          - if current_user.admin?
-            %td= link_to 'Edit', edit_chapter_path(chapter)
-            %td= link_to 'Destroy', chapter, method: :delete, data: { confirm: 'Are you sure?' }
+          -if current_user
+            - if current_user.admin?
+              %td= link_to 'Edit', edit_chapter_path(chapter)
+              %td= link_to 'Destroy', chapter, method: :delete, data: { confirm: 'Are you sure?' }
 
