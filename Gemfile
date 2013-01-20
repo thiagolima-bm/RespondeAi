@@ -21,7 +21,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   gem 'therubyracer', :platforms => :ruby
-  gem 'bootstrap-sass-rails', '~> 1.0'
+  gem 'bootstrap-sass', '~> 2.2.2.0'
 
   gem 'uglifier', '>= 1.0.3'
 end
@@ -34,6 +34,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'valid_attribute'
   gem 'sqlite3'
+  gem 'pry'
 end
 
 group :production do
