@@ -1,19 +1,9 @@
 class ExercisesController < ApplicationController
-  # GET /exercises
-  # GET /exercises.json
-  def index
-    @exercises = Exercise.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @exercises }
-    end
-  end
+  load_and_authorize_resource
 
   # GET /exercises/1
   # GET /exercises/1.json
   def show
-    @exercise = Exercise.find(params[:id])
     @solution_steps = SolutionStep.where("exercise_id = ?", params[:id]).order(:number)
 
     respond_to do |format|
@@ -25,7 +15,6 @@ class ExercisesController < ApplicationController
   # GET /exercises/new
   # GET /exercises/new.json
   def new
-    @exercise = Exercise.new
     @exercise.chapter = Chapter.find params[:chapter]
 
     respond_to do |format|
@@ -36,14 +25,11 @@ class ExercisesController < ApplicationController
 
   # GET /exercises/1/edit
   def edit
-    @exercise = Exercise.find(params[:id])
   end
 
   # POST /exercises
   # POST /exercises.json
   def create
-    @exercise = Exercise.new(params[:exercise])
-
     respond_to do |format|
       if @exercise.save
         format.html { redirect_to chapter_path(@exercise.chapter_id), notice: 'Exercise was successfully created.' }
@@ -58,8 +44,6 @@ class ExercisesController < ApplicationController
   # PUT /exercises/1
   # PUT /exercises/1.json
   def update
-    @exercise = Exercise.find(params[:id])
-
     respond_to do |format|
       if @exercise.update_attributes(params[:exercise])
         format.html { redirect_to chapter_path(@exercise.chapter_id), notice: 'Exercise was successfully updated.' }
@@ -74,7 +58,6 @@ class ExercisesController < ApplicationController
   # DELETE /exercises/1
   # DELETE /exercises/1.json
   def destroy
-    @exercise = Exercise.find(params[:id])
     @exercise.destroy
 
     respond_to do |format|

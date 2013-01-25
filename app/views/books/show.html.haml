@@ -4,7 +4,8 @@
 .row-fluid
 
   .span3
-    = link_to 'Novo capítulo', new_chapter_path(:book => @book.id), class: "btn btn-primary"
+    - if can? :create, Chapter
+      = link_to 'Novo capítulo', new_chapter_path(:book => @book.id), class: "btn btn-primary"
     %br
     %br
     %h4 Dados do livro
@@ -29,8 +30,8 @@
     %p
       %b Descrição:
       = @book.description
-
-    = link_to 'Editar', edit_book_path(@book)
+    - if can? :edit, @book
+      = link_to 'Editar', edit_book_path(@book)
   
   .span9
     %h4 Capítulos

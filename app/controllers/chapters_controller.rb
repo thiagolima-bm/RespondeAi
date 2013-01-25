@@ -1,23 +1,10 @@
 class ChaptersController < ApplicationController
-  # GET /chapters
-  # GET /chapters.json
-  def index
-    if params[:book]
-      @chapters = Chapter.where("book_id = ?", params[:book])
-    else
-      @chapters = Chapter.all
-    end
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @chapters }
-    end
-  end
+  load_and_authorize_resource
 
   # GET /chapters/1
   # GET /chapters/1.json
   def show
-    @chapter = Chapter.find(params[:id])
     @exercises = Exercise.where("chapter_id = ?", params[:id]).order(:number)
 
     respond_to do |format|
@@ -29,7 +16,6 @@ class ChaptersController < ApplicationController
   # GET /chapters/new
   # GET /chapters/new.json
   def new
-    @chapter = Chapter.new
     @chapter.book = Book.find params[:book]
 
     respond_to do |format|
@@ -40,14 +26,11 @@ class ChaptersController < ApplicationController
 
   # GET /chapters/1/edit
   def edit
-    @chapter = Chapter.find(params[:id])
   end
 
   # POST /chapters
   # POST /chapters.json
   def create
-    @chapter = Chapter.new(params[:chapter])
-
     respond_to do |format|
       if @chapter.save
         format.html { redirect_to book_path(@chapter.book_id), notice: 'Chapter was successfully created.' }
@@ -62,8 +45,6 @@ class ChaptersController < ApplicationController
   # PUT /chapters/1
   # PUT /chapters/1.json
   def update
-    @chapter = Chapter.find(params[:id])
-
     respond_to do |format|
       if @chapter.update_attributes(params[:chapter])
         format.html { redirect_to book_path(@chapter.book_id), notice: 'Chapter was successfully updated.' }
@@ -78,7 +59,6 @@ class ChaptersController < ApplicationController
   # DELETE /chapters/1
   # DELETE /chapters/1.json
   def destroy
-    @chapter = Chapter.find(params[:id])
     @chapter.destroy
 
     respond_to do |format|

@@ -12,7 +12,7 @@ Duvidas::Application.routes.draw do
 
   resources :books
 
-  root to: "books#index"
+  root to: "sessions#login"
   resources :questions, only: [:index, :new, :create]
 
   match "/login" => "questions#login"

@@ -2,13 +2,14 @@
   %h1= (link_to @exercise.chapter.book.title, @exercise.chapter.book) + " > " + (link_to "Capítulo #{@exercise.chapter.number}", @exercise.chapter) + ' > Exercício ' + @exercise.number
 
 .row-fluid
-  .span2
-    =link_to "Novo passo", new_solution_step_path(exercise: @exercise.id), class: "btn btn-primary"
+  - if can? :create, SolutionStep
+    .span2
+      =link_to "Novo passo", new_solution_step_path(exercise: @exercise.id), class: "btn btn-primary"
 
   .span10
     - @solution_steps.each do |solution_step|
       -if current_user
-        - if current_user.admin? or current_user == solution_step.user
+        - if can? :edit, solution_step
           .pull-right
             = link_to 'Edit', edit_solution_step_path(solution_step)
             \|

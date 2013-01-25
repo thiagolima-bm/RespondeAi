@@ -3,7 +3,8 @@
 
 .row-fluid
   .span3
-    = link_to 'Novo exercício', new_exercise_path(:chapter => @chapter.id), class: "btn btn-primary"
+    - if can? :create, Exercise
+      = link_to 'Novo exercício', new_exercise_path(:chapter => @chapter.id), class: "btn btn-primary"
     %br
     %br
     %h4 Dados do livro
@@ -28,8 +29,8 @@
     %p
       %b Descrição:
       = @chapter.book.description
-
-    = link_to 'Editar', edit_book_path(@chapter.book)
+    - if can? :edit, @chapter
+      = link_to 'Editar', edit_book_path(@chapter.book)
 
   .span9
     %h4 Exercícios

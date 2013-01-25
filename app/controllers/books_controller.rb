@@ -1,9 +1,9 @@
 class BooksController < ApplicationController
+  load_and_authorize_resource
+
   # GET /books
   # GET /books.json
   def index
-    @books = Book.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @books }
@@ -13,7 +13,6 @@ class BooksController < ApplicationController
   # GET /books/1
   # GET /books/1.json
   def show
-    @book = Book.find(params[:id])
     @chapters = Chapter.where("book_id = ?", params[:id]).order(:number)
 
     respond_to do |format|
@@ -25,8 +24,6 @@ class BooksController < ApplicationController
   # GET /books/new
   # GET /books/new.json
   def new
-    @book = Book.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @book }
@@ -35,14 +32,11 @@ class BooksController < ApplicationController
 
   # GET /books/1/edit
   def edit
-    @book = Book.find(params[:id])
   end
 
   # POST /books
   # POST /books.json
   def create
-    @book = Book.new(params[:book])
-
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
@@ -57,8 +51,6 @@ class BooksController < ApplicationController
   # PUT /books/1
   # PUT /books/1.json
   def update
-    @book = Book.find(params[:id])
-
     respond_to do |format|
       if @book.update_attributes(params[:book])
         format.html { redirect_to @book, notice: 'Book was successfully updated.' }
@@ -73,7 +65,6 @@ class BooksController < ApplicationController
   # DELETE /books/1
   # DELETE /books/1.json
   def destroy
-    @book = Book.find(params[:id])
     @book.destroy
 
     respond_to do |format|

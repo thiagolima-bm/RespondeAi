@@ -1,20 +1,9 @@
 class SolutionStepsController < ApplicationController
-  # GET /solution_steps
-  # GET /solution_steps.json
-  def index
-    @solution_steps = SolutionStep.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @solution_steps }
-    end
-  end
+  load_and_authorize_resource
 
   # GET /solution_steps/1
   # GET /solution_steps/1.json
   def show
-    @solution_step = SolutionStep.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @solution_step }
@@ -24,7 +13,6 @@ class SolutionStepsController < ApplicationController
   # GET /solution_steps/new
   # GET /solution_steps/new.json
   def new
-    @solution_step = SolutionStep.new
     @solution_step.exercise = Exercise.find params[:exercise]
 
     respond_to do |format|
@@ -35,13 +23,12 @@ class SolutionStepsController < ApplicationController
 
   # GET /solution_steps/1/edit
   def edit
-    @solution_step = SolutionStep.find(params[:id])
   end
 
   # POST /solution_steps
   # POST /solution_steps.json
   def create
-    @solution_step = current_user.solution_steps.new(params[:solution_step])
+    @solution_step.user = current_user
 
     respond_to do |format|
       if @solution_step.save
@@ -57,8 +44,6 @@ class SolutionStepsController < ApplicationController
   # PUT /solution_steps/1
   # PUT /solution_steps/1.json
   def update
-    @solution_step = SolutionStep.find(params[:id])
-
     respond_to do |format|
       if @solution_step.update_attributes(params[:solution_step])
         format.html { redirect_to exercise_path(@solution_step.exercise), notice: 'Solution step was successfully updated.' }
@@ -73,7 +58,6 @@ class SolutionStepsController < ApplicationController
   # DELETE /solution_steps/1
   # DELETE /solution_steps/1.json
   def destroy
-    @solution_step = SolutionStep.find(params[:id])
     @solution_step.destroy
 
     respond_to do |format|

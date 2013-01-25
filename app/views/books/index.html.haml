@@ -2,8 +2,9 @@
   %h1 Livros
 
 .row-fluid
-  .span2
-    = link_to 'Novo livro', new_book_path, class: "btn btn-primary"
+  - if can? :create, Book
+    .span2
+      = link_to 'Novo livro', new_book_path, class: "btn btn-primary"
 
   .span10
     %table.table
