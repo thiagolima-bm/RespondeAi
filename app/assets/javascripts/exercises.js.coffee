@@ -5,9 +5,9 @@
 $ ->
   $(".show-comments").click ->
     $(this).siblings(".comments-inner").slideToggle()
-    $('html, body').animate {
-      scrollTop: $(this).siblings(".comments-inner").offset().top 
-    }, 1000
+    # $('html, body').animate {
+    #   scrollTop: $(this).siblings(".comments-inner").offset().top 
+    # }, 1000
     false
   
   $(".comments textarea").autosize()
