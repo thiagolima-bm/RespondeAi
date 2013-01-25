@@ -15,4 +15,27 @@
             \|
             = link_to 'Destroy', solution_step, method: :delete, data: { confirm: 'Are you sure?' }
       %p= "Passo " + solution_step.number
-      .hero-unit.solution-step= solution_step.body.html_safe
+      .hero-unit.solution-step
+        .main
+          = solution_step.body.html_safe
+        .comments
+          = link_to "Comentários", "#", class: "btn btn-responde show-comments"
+          .comments-inner
+            - solution_step.comments.each do |c|
+              .comment
+                .author_picture= image_tag(c.user.image_url, height: 50)
+                .comment_texts
+                  .author
+                    %span.name= c.user.name
+                    %span.when= c.created_at.strftime("em %d/%m/%Y às %H:%Mh.")
+                  .content= simple_format c.content
+                .clear
+            - if can? :create, Comment
+              .new
+                .user_picture= image_tag(current_user.image_url, height: 50)
+                = form_for([solution_step, @comment]) do |f|
+                  = f.text_area :content, rows: 4, class: "comment-content"
+                  = hidden_field_tag :resource, "art"
+                  = f.submit "Comente Aí :)", class: "btn btn-responde btn-small"
+                  = link_to "Cancelar", "#", class: "btn btn-small cancel-comment",  style: "display: none;"
+                .clear

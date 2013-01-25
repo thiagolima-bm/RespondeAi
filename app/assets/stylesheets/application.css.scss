@@ -1,6 +1,21 @@
+@mixin border-radius ($sz) {
+  -moz-border-radius: $sz;
+  -webkit-border-radius: $sz;
+  -ms-border-radius: $sz;
+  -o-border-radius: $sz;
+  border-radius: $sz;
+}
+
 @import 'bootstrap';
 
 @import url(http://fonts.googleapis.com/css?family=Joti+One);
+
+@import 'comments';
+@import 'exercises';
+
+.clear {
+  clear: both;
+}
 
 #content {
   margin-top: 80px;

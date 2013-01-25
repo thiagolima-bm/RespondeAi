@@ -1,0 +1,66 @@
+// Place all the styles related to the comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.comments {
+  padding-top: 5px;
+  border-top: 2px solid #ccc;
+  .comments-inner {
+    font-size: 12px;
+    .comment {
+      border-bottom: 1px solid #CCC;
+      padding: 19px 0 23px;
+      min-height: 50px;
+      .author_picture {
+        width: 50px;
+        height: 50px;
+        float: left;
+        margin: 0 10px 0 5px;
+        img { @include border-radius(2px); }
+      }
+      .comment_texts {
+        .author {
+          line-height: 1;
+          .name { font-weight: bold; }
+          .when {
+            font-style: italic;
+            color: #666;
+          }
+        }
+
+        .content { 
+          padding-top: 4px;
+          width: 435px;
+          float: left;
+          p {
+            margin-bottom: 1em;
+            &:last-child {margin-bottom: 0px;}
+          }
+        }
+      }
+    }
+  }
+}
+
+.new {
+  padding: 10px;
+  margin: 10px 0;
+
+  .user_picture { float: left; }
+
+  form {
+    float: left;
+    width:  435px;
+    textarea{
+      margin: 0 10px;
+      width: 413px;
+      height: 40px;
+      padding: 5px;
+    }
+    #cancel-comment {
+      margin: 5px 4px 0;
+    }
+    .btn-responde {
+      margin: 5px 4px 0 10px;
+    }
+  }
+}

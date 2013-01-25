@@ -5,7 +5,8 @@ class ExercisesController < ApplicationController
   # GET /exercises/1.json
   def show
     @solution_steps = SolutionStep.where("exercise_id = ?", params[:id]).order(:number)
-
+    @comment = Comment.new
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @exercise }
