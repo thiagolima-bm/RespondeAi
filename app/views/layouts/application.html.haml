@@ -16,6 +16,10 @@
           %ul.nav.pull-right
             %li{class: current_page?(controller: "books") ? "active" : ""}= link_to "Livros", "/"
             %li{class: current_page?(controller: "questions", action: "about") ? "active" : ""}= link_to "Quem são esses ninjas?", "/about"
+            - if current_user
+              %li= link_to "Desconectar de #{current_user.name.split.first}", signout_path
+            - else
+              %li= link_to "Conectar", "/auth/facebook"
     #content.container
       - if notice
         .alert

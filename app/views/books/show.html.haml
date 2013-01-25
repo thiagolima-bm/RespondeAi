@@ -4,7 +4,7 @@
 .row-fluid
 
   .span3
-    = link_to 'Adicionar capítulo', new_chapter_path(:book => @book.id), class: "btn btn-primary"
+    = link_to 'Novo capítulo', new_chapter_path(:book => @book.id), class: "btn btn-primary"
     %br
     %br
     %h4 Dados do livro
@@ -38,6 +38,8 @@
       - @chapters.each do |chapter|
         %tr
           %td= link_to chapter.number, chapter
-          %td= link_to 'Edit', edit_chapter_path(chapter)
-          %td= link_to 'Destroy', chapter, method: :delete, data: { confirm: 'Are you sure?' }
+          -if current_user
+            - if current_user.admin?
+              %td= link_to 'Edit', edit_chapter_path(chapter)
+              %td= link_to 'Destroy', chapter, method: :delete, data: { confirm: 'Are you sure?' }
 

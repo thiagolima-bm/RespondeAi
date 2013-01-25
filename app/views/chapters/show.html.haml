@@ -3,7 +3,7 @@
 
 .row-fluid
   .span3
-    = link_to 'Adicionar exercício', new_exercise_path(:chapter => @chapter.id), class: "btn btn-primary"
+    = link_to 'Novo exercício', new_exercise_path(:chapter => @chapter.id), class: "btn btn-primary"
     %br
     %br
     %h4 Dados do livro
@@ -38,6 +38,8 @@
       - @exercises.each do |exercise|
         %tr
           %td= link_to exercise.number, exercise
-          %td= link_to 'Editar', edit_exercise_path(exercise)
-          %td= link_to 'Remover', exercise, method: :delete, data: { confirm: 'Are you sure?' }
+          -if current_user
+            - if current_user.admin?
+              %td= link_to 'Editar', edit_exercise_path(exercise)
+              %td= link_to 'Remover', exercise, method: :delete, data: { confirm: 'Are you sure?' }
 

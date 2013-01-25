@@ -2,14 +2,16 @@
   %h1= (link_to @exercise.chapter.book.title, @exercise.chapter.book) + " > " + (link_to "Capítulo #{@exercise.chapter.number}", @exercise.chapter) + ' > Exercício ' + @exercise.number
 
 .row-fluid
-  .span3
-    =link_to "Adicionar passo", new_solution_step_path(exercise: @exercise.id), class: "btn btn-primary"
+  .span2
+    =link_to "Novo passo", new_solution_step_path(exercise: @exercise.id), class: "btn btn-primary"
 
-  .span9
+  .span10
     - @solution_steps.each do |solution_step|
-      .pull-right
-        = link_to 'Edit', edit_solution_step_path(solution_step)
-        \|
-        = link_to 'Destroy', solution_step, method: :delete, data: { confirm: 'Are you sure?' }
+      -if current_user
+        - if current_user.admin? or current_user == solution_step.user
+          .pull-right
+            = link_to 'Edit', edit_solution_step_path(solution_step)
+            \|
+            = link_to 'Destroy', solution_step, method: :delete, data: { confirm: 'Are you sure?' }
       %p= "Passo " + solution_step.number
       .hero-unit= solution_step.body.html_safe
