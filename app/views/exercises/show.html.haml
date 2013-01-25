@@ -19,7 +19,7 @@
         .main
           = solution_step.body.html_safe
         .comments
-          = link_to "Comentários", "#", class: "btn btn-responde show-comments"
+          = link_to "Comentários (#{solution_step.comments.count})", "#", class: "btn btn-responde show-comments"
           .comments-inner
             - solution_step.comments.each do |c|
               .comment
