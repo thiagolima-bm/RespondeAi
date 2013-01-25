@@ -5,8 +5,9 @@ Duvidas::Application.routes.draw do
   mathjax 'mathjax'
 
   resources :solution_steps do
-    resources :comments
+    resources :comments, only: [:create]
   end
+  resources :comments, only: [:destroy]
 
   resources :exercises
 

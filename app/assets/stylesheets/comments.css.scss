@@ -7,6 +7,12 @@
   .comments-inner {
     font-size: 12px;
     .comment {
+      position: relative;
+      .remove-comment {
+        position: absolute;
+        top: 19px;
+        right: 0;
+      }
       border-bottom: 1px solid #CCC;
       padding: 19px 0 23px;
       min-height: 50px;

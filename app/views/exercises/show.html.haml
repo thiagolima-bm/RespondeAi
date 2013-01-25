@@ -23,6 +23,9 @@
           .comments-inner
             - solution_step.comments.each do |c|
               .comment
+                - if can? :destroy, c
+                  = link_to comment_path(c), method: "DELETE", class:"remove-comment" do
+                    %i.icon-remove
                 .author_picture= image_tag(c.user.image_url, height: 50)
                 .comment_texts
                   .author
@@ -35,7 +38,6 @@
                 .user_picture= image_tag(current_user.image_url, height: 50)
                 = form_for([solution_step, @comment]) do |f|
                   = f.text_area :content, rows: 4, class: "comment-content"
-                  = hidden_field_tag :resource, "art"
                   = f.submit "Comente Aí :)", class: "btn btn-responde btn-small"
                   = link_to "Cancelar", "#", class: "btn btn-small cancel-comment",  style: "display: none;"
                 .clear

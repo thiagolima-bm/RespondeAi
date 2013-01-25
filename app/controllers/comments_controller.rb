@@ -13,5 +13,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    if @comment.destroy
+      redirect_to :back, notice: "Comentário removido com sucesso"
+    else
+      redirect_to :back, notice: "Houve um erro ao remover comentário"
+    end
   end
 end
