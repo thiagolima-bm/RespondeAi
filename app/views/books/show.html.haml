@@ -5,7 +5,7 @@
 
   .span3
     - if can? :create, Chapter
-      = link_to 'Novo capítulo', new_chapter_path(:book => @book.id), class: "btn btn-primary"
+      = link_to 'Novo capítulo', new_chapter_path(:book => @book.id), class: "btn btn-responde"
     %br
     %br
     %h4 Dados do livro

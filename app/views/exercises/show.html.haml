@@ -4,7 +4,7 @@
 .row-fluid
   - if can? :create, SolutionStep
     .span2
-      =link_to "Novo passo", new_solution_step_path(exercise: @exercise.id), class: "btn btn-primary"
+      =link_to "Novo passo", new_solution_step_path(exercise: @exercise.id), class: "btn btn-responde"
 
   .span10
     - @solution_steps.each do |solution_step|

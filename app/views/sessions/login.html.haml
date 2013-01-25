@@ -1,8 +1,7 @@
 .span12.main-unit
   = image_tag("big-logo.png")
-  %p Olá, bem vindo ao Responde Aí!
+  %p Seus exercícios resolvidos passo a passo.
   - if current_user
-    = link_to "Ver Exercìcios Resolvidos", books_path, class: "btn btn-large btn-success"
+    = link_to "Ver Exercìcios Resolvidos", books_path, class: "btn btn-large btn-responde"
   - else
-    %p Entre com o facebook para conferir os exercícios resolvidos.
     = link_to "Entrar com Facebook", "/auth/facebook", class: "btn btn-large btn-primary"
