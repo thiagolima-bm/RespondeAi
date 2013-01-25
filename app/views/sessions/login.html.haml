@@ -1,5 +1,8 @@
-.hero-unit
-  %h1 Responde Aí
+.span12.main-unit
+  = image_tag("big-logo.png")
   %p Olá, bem vindo ao Responde Aí!
-  %p Entre com o facebook para conferir os exercícios resolvidos.
-  = link_to "Entrar com Facebook", "/auth/facebook", class: "btn btn-large btn-primary"
+  - if current_user
+    = link_to "Ver Exercìcios Resolvidos", books_path, class: "btn btn-large btn-success"
+  - else
+    %p Entre com o facebook para conferir os exercícios resolvidos.
+    = link_to "Entrar com Facebook", "/auth/facebook", class: "btn btn-large btn-primary"

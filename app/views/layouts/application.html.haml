@@ -12,7 +12,7 @@
     .navbar.navbar-fixed-top
       .navbar-inner
         .container
-          = link_to image_tag("logo.png"), root_path
+          = link_to image_tag("logo.png"), root_path if !current_page?("/")
           %ul.nav.pull-right
             %li{class: current_page?(controller: "books") ? "active" : ""}= link_to "Livros", "/books"
             - if current_user
